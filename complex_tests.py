@@ -31,8 +31,12 @@ print("w = "+str(w))
 
 # %%Test to_polar et to_cartesien
 z = com.Complex(1,2,True)   #cartésien
-zPolar = z.to_polaire
+zPolar = z.to_polaire()
 w = com.Complex(1.4,1.5,False)
-wCart = w.to_cartesien
+wCart = w.to_cartesien()
 print("zPolar = "+str(zPolar))
 print("wCart = "+str(wCart))
+
+#%%Test print polaire
+z = com.Complex(1,2,False)
+z.print_polaire()

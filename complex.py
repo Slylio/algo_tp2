@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-from asyncio.windows_events import NULL
-from cgi import test
-from contextlib import nullcontext
-import imghdr
 import math
 
 
@@ -102,17 +98,28 @@ class Complex(object):
       return result
    
    def to_polaire(self):
+      """transforme un cartésien en polaire
+      input -- self : instance of class Complex
+      output -- instance of class Complex the polar version of self
+      """
       r=math.sqrt(self.real^2+self.imag^2)
       t=1/math.tan(self.imag/self.real)
       return Complex(r, t, False)
 
    def to_cartesien(self):
+      """transforme un polaire en cartésien
+      input -- self : instance of class Complex
+      output -- instance of class Complex the cartesian version of self
+      """
       r=self.rho*math.cos(self.theta)
       i=self.rho*math.sin(self.theta)
       return Complex(r, i, True)
 
    def print_polaire(self):
-      if self.theta > 0:
-         return str(round(self.rho, 2))+"exp(i."+str(round(self.theta, 2))+")"
+      if not self.cartPolaire:
+         if self.theta > 0:
+            print(str(round(self.rho, 2))+"exp(i."+str(round(self.theta, 2))+")")
+         else :
+            print(str(round(self.rho, 2))+"exp(-i."+str(round(-self.theta, 2))+")")
       else :
-         return str(round(self.rho, 2))+"exp(-i."+str(round(-self.theta, 2))+")"
+         print("Entrez une expression Polaire")
